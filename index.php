@@ -11,7 +11,7 @@
       h1 { position:absolute; background:black; color:white; padding:10px; font-weight:200; z-index:10000;}
       #all-examples-info { position:absolute; background:white; font-size:16px; padding:20px; bottom:20px; width:350px; line-height:150%; border:1px solid rgba(0,0,0,.2);}
     </style>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkcY9do9bcPzM-W3CfHgowjhaCT9i_uuc&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkcY9do9bcPzM-W3CfHgowjhaCT9i_uuc&callback=initMap"
   type="text/javascript"></script>
     <script src="./js/heatmap.js"></script>
     <script src="./js/gmaps-heatmap.js"></script>
