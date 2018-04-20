@@ -23,7 +23,7 @@
     
     
     <script>
-        map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+        
         d3.csv("./counts.csv", function(d) {
           return {
             lat : parseFloat(d.lat),
@@ -49,7 +49,7 @@
           center: myLatlng
         };
         // standard map
-        
+        map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
         // heatmap layer
         heatmap = new HeatmapOverlay(map, 
           {
