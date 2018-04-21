@@ -44,7 +44,7 @@
     
     
     <script>
-        showYear(2016);
+        showYear(2014);
         function chooseYear() {
             var year = document.querySelector('input[name = "year"]:checked').value;
             console.log(year);
@@ -53,9 +53,11 @@
         function showYear(year) {
             var fileName = "";
             if(year == 2015) {
-                fileName = "./counts_2015.csv"
+                fileName = "./counts_2014.csv"
+            } else if(year == 2015) {
+              fileName = "./counts_2015.csv"
             } else if(year == 2016) {
-              fileName = "./counts_2016.csv"
+                  fileName = "./counts_2016.csv"
             } else if(year == 2017) {
                   fileName = "./counts_2017.csv"
             }
