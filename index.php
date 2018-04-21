@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <title>Chicago Taxi Heatmap</title>
+    <title>Chicago Taxi DropOff Location Heatmap</title>
     <style>
       html { height: 100% }
       body { 
