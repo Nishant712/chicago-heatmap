@@ -3,13 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <title>Googlemaps Heatmap Layer</title>
+    <title>Chicago Taxi Heatmap</title>
     <style>
       html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0; font-family:sans-serif; }
-      #map-canvas { height: 100% }
-      h1 { position:absolute; background:black; color:white; padding:10px; font-weight:200; z-index:10000;}
-      #all-examples-info { position:absolute; background:white; font-size:16px; padding:20px; bottom:20px; width:350px; line-height:150%; border:1px solid rgba(0,0,0,.2);}
+      body { 
+          height: 100%; 
+          font-family:sans-serif; 
+          
+      }
+      #map-canvas { 
+          margin-top: 1%;
+          width: 100%;
+          height: 90%; 
+      }
+      
+      h2 {
+          margin-top: 0;
+      }
+      
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkcY9do9bcPzM-W3CfHgowjhaCT9i_uuc&callback=initMap"
   type="text/javascript"></script>
@@ -18,23 +29,49 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
   </head>
   <body>
-    <h1>Chicago HeatMap</h1>
+    <div class="page_header">
+        <div class="map_title"><h2>Chicago HeatMap</h2></div>
+        <div class="options">
+            <input type="radio" name="year" value="2013" onclick="chooseYear()"> 2013
+            <input type="radio" name="year" value="2014" onclick="chooseYear()"> 2014
+            <input type="radio" name="year" value="2015" onclick="chooseYear()"> 2015
+            <input type="radio" name="year" value="2016" onclick="chooseYear()"> 2016
+            <input type="radio" name="year" value="2017" onclick="chooseYear()"> 2017
+        </div>
+    </div>
+    
     <div id="map-canvas"></div>
     
     
     <script>
+        showYear(2016);
+        function chooseYear() {
+            var year = document.querySelector('input[name = "year"]:checked').value;
+            console.log(year);
+            showYear(parseInt(year));
+        }
+        function showYear(year) {
+            var fileName = "";
+            if(year == 2015) {
+                fileName = "./counts_2015.csv"
+            } else if(year == 2016) {
+              fileName = "./counts_2016.csv"
+            } else if(year == 2017) {
+                  fileName = "./counts_2017.csv"
+            }
+            d3.csv(fileName, function(d) {
+              return {
+                lat : parseFloat(d.lat),
+                lng : parseFloat(d.lng),
+                count : parseInt(d.count)
+              };
+            }, function(data) {
+              
+              console.log(data[0]);
+              parse_data(data);
+            });
+        }
         
-        d3.csv("./counts.csv", function(d) {
-          return {
-            lat : parseFloat(d.lat),
-            lng : parseFloat(d.lng),
-            count : parseInt(d.count)
-          };
-        }, function(data) {
-          
-          console.log(data[0]);
-          parse_data(data);
-        });
       function parse_data(dataset) {
         var parsed_data = [];
         for(var i = 0; i < dataset.length; i++) {
@@ -54,14 +91,14 @@
         heatmap = new HeatmapOverlay(map, 
           {
             // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-            "radius": 30,
+            "radius": 20,
             "maxOpacity": 1, 
             // scales the radius based on map zoom
             "scaleRadius": false, 
             // if set to false the heatmap uses the global maximum for colorization
             // if activated: uses the data maximum within the current map boundaries 
             //   (there will always be a red spot with useLocalExtremas true)
-            "useLocalExtrema": true,
+            "useLocalExtrema": false,
             // which field name in your data represents the latitude - default "lat"
             latField: 'lat',
             // which field name in your data represents the longitude - default "lng"
@@ -72,7 +109,7 @@
         );
 
         var testData = {
-          max: 500,
+          max: 10000,
            data: parsed_data
         };
 
