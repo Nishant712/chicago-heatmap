@@ -32,7 +32,7 @@
     <div class="page_header">
         <div class="map_title"><h2>Chicago HeatMap</h2></div>
         <div class="options">
-            <input type="radio" name="year" value="2013" onclick="chooseYear()"> 2013
+            <input type="radio" name="year" value="2013" onclick="chooseYear()" checked> 2013
             <input type="radio" name="year" value="2014" onclick="chooseYear()"> 2014
             <input type="radio" name="year" value="2015" onclick="chooseYear()"> 2015
             <input type="radio" name="year" value="2016" onclick="chooseYear()"> 2016
@@ -44,7 +44,7 @@
     
     
     <script>
-        showYear(2014);
+        showYear(2013);
         function chooseYear() {
             var year = document.querySelector('input[name = "year"]:checked').value;
             console.log(year);
