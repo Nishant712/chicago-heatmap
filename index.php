@@ -52,10 +52,12 @@
         }
         function showYear(year) {
             var fileName = "";
-            if(year == 2015) {
-                fileName = "./counts_2014.csv"
+            if(year == 2013) {
+                fileName = "./counts_2013.csv"
+            } else if(year == 2014) {
+              fileName = "./counts_2014.csv"
             } else if(year == 2015) {
-              fileName = "./counts_2015.csv"
+                  fileName = "./counts_2015.csv"
             } else if(year == 2016) {
                   fileName = "./counts_2016.csv"
             } else if(year == 2017) {
