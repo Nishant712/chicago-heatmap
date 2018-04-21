@@ -30,7 +30,7 @@
   </head>
   <body>
     <div class="page_header">
-        <div class="map_title"><h2>Chicago HeatMap</h2></div>
+        <div class="map_title"><h2>Chicago Taxi DropOff Locations Heatmap</h2></div>
         <div class="options">
             <input type="radio" name="year" value="2013" onclick="chooseYear()" checked> 2013
             <input type="radio" name="year" value="2014" onclick="chooseYear()"> 2014
